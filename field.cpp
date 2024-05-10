@@ -91,11 +91,8 @@ void generateMultiplicationTable() {
     logarithms[1] = byte(0);
 }
 
+// used to reconstruct the secret
 unsigned char interpolate(vector<point>& share) {
-/*
-    Find the y-value for the given x, given n (x, y) points;
-    nk points will define a polynomial of up to nth order.
-*/
 
     byte secret = 0;
     int n = share.size();
@@ -110,5 +107,6 @@ unsigned char interpolate(vector<point>& share) {
         currVal = currVal * share[i].y;
         secret = secret + currVal;
     }
+    // return the secret
     return secret.num;
 }
